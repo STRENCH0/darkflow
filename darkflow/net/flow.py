@@ -62,6 +62,9 @@ def train(self):
 
         if self.FLAGS.summary:
             self.writer.add_summary(fetched[2], step_now)
+        if self.FLAGS.logFile:
+            with open(self.FLAGS.logFile, 'a') as log_file:
+                log_file.write('{},{},{}'.format(step_now, loss, loss_mva))
 
         form = 'step {} - loss {} - moving ave loss {}'
         self.say(form.format(step_now, loss, loss_mva))
