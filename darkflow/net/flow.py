@@ -37,10 +37,15 @@ def train(self):
     loss_op = self.framework.loss
 
     for i, (x_batch, datum) in enumerate(batches):
-        if not i: self.say(train_stats.format(
-            self.FLAGS.lr, self.FLAGS.batch,
-            self.FLAGS.epoch, self.FLAGS.save
-        ))
+        if not i:
+            stats_str = train_stats.format(
+                self.FLAGS.lr, self.FLAGS.batch,
+                self.FLAGS.epoch, self.FLAGS.save
+            )
+            self.say(stats_str)
+            if self.FLAGS.logFile:
+                with open(self.FLAGS.logFile, 'a') as log_file:
+                    log_file.write(stats_str)
 
         feed_dict = {
             loss_ph[key]: datum[key] 
