@@ -46,6 +46,7 @@ def train(self):
             if self.FLAGS.logFile:
                 with open(self.FLAGS.logFile, 'a') as log_file:
                     log_file.write(stats_str)
+                    log_file.write('\n')
 
         feed_dict = {
             loss_ph[key]: datum[key] 
