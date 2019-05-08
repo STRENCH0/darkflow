@@ -36,6 +36,7 @@ class argHandler(dict):
         self.define('pbLoad', '', 'path to .pb protobuf file (metaLoad must also be specified)')
         self.define('metaLoad', '', 'path to .meta file generated during --savepb that corresponds to .pb file')
         self.define('logFile', '', 'log file path')
+        self.define('recolor', True, 'recolor image at preprocessing')
 
     def define(self, argName, default, description):
         self[argName] = default
